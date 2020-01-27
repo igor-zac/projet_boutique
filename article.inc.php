@@ -1,8 +1,11 @@
 <?php
 
-$names = ["Article 1", "Article 2", "Article 3"]; // Tableau contenant les noms des articles
-$prix = [100, 400, 200]; //Tableau contenant les prix des articles
-$img_name = ["article1.jpg", "article2.jpg", "article3.jpg"]; // Nom des différentes images
+$articles=[
+        "Article 1" => ["Article 1", 100, "article1.jpg"],
+        "Article 2" => ["Article 2", 400, "article2.jpg"],
+        "Article 3" => ["Article 3", 200, "article3.jpg"]
+];
+
 
 /*Boucle for itérant a travers $names et qui affecte le prix et l'image correspondant a l'article en fonction des
 tableaux $prix et $img_name
@@ -10,16 +13,16 @@ tableaux $prix et $img_name
 Elle génère a chaque tour une div 'article' qui est de type flex, la disposition est mise en forme dans le fichier
 style.css */
 
-for($i = 0; $i<count($names); $i++) { ?>
-    <div class="article" id="<?php echo $i?>">
+foreach($articles as $article) { ?>
+    <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $img_name[$i]?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?php echo $article[2]?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $names[$i]?></h2>
+        <h2><?php echo $article[0]?></h2>
 
         <div class="prix">
-            <p><?php echo $prix[$i]?> €</p>
+            <p><?php echo $article[1]?> €</p>
         </div>
     </div>
 <?php
