@@ -10,10 +10,18 @@ tableaux $prix et $img_name
 Elle génère a chaque tour une div 'article' qui est de type flex, la disposition est mise en forme dans le fichier
 style.css */
 
-for($i = 0; $i<count($names); $i++) {
-    print("<div class=\"article\" id='$i'>");
-    print("<div><img class=\"image_article\" src=img/$img_name[$i] alt=\"L'image de mon article\"></div>");
-    print("<h2>$names[$i]</h2>");
-    print("<div class=\"prix\"> <p>$prix[$i] €</p> </div>");
-    print("</div>");
+for($i = 0; $i<count($names); $i++) { ?>
+    <div class="article" id="<?php echo $i?>">
+        <div>
+            <img class="image_article" src=img/<?php echo $img_name[$i]?> alt="L'image de mon article">
+        </div>
+
+        <h2><?php echo $names[$i]?></h2>
+
+        <div class="prix">
+            <p><?php echo $prix[$i]?> €</p>
+        </div>
+    </div>
+<?php
 }
+?>
