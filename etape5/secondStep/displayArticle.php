@@ -1,9 +1,13 @@
 <!doctype html>
 <?php
-$article=$_POST['name'];
-$prix=(float)$_POST['price'];
-$path_to_img="upload/" . basename($_FILES['myFile']['name']);
-move_uploaded_file($_FILES['myFile']['tmp_name'], $path_to_img);
+session_start();
+$article = $_SESSION['articleName'];
+$price = $_SESSION['articlePrice'];
+$path_to_img = $_SESSION['pathToImg'];
+unset($_SESSION['pathToImg']);
+unset($_SESSION['articleName']);
+unset($_SESSION['articlePrice']);
+session_destroy();
 
 ?>
 
@@ -27,7 +31,7 @@ move_uploaded_file($_FILES['myFile']['tmp_name'], $path_to_img);
             <h2><?= $article ?></h2>
 
             <div class="prix">
-                <p><?= $prix ?> €</p>
+                <p><?= $price ?> €</p>
             </div>
         </div>
     </body>
