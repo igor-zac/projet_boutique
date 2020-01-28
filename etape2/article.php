@@ -20,7 +20,7 @@
                 ?>
 
                 <div>
-                    <img class="image_article" src=<?php echo $path_to_img?> alt="L'image de mon article">
+                    <img class="image_article" src="<?= $path_to_img?>" alt="L'image de mon article">
                 </div>
 
                 <h2><?php echo $name?></h2>
