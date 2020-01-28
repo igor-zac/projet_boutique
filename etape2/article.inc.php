@@ -16,13 +16,13 @@ style.css */
 foreach($articles as $article) { ?>
     <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $article[2]?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?= $article[2]?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $article[0]?></h2>
+        <h2><?= $article[0]?></h2>
 
         <div class="prix">
-            <p><?php echo $article[1]?> €</p>
+            <p><?= $article[1]?> €</p>
         </div>
     </div>
 <?php

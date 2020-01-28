@@ -11,7 +11,7 @@
             <h1>Nom de la boutique</h1>
         </header>
 <!-- Appelle le fichier article.inc.php pour générer les blocs article de la page -->
-            <?php
+            <?=
 
                 include("article.inc.php");
 
