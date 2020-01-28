@@ -10,10 +10,13 @@
         <header>
             <h1>Nom de la boutique</h1>
         </header>
-<!-- Appelle le fichier article.inc.php pour générer les blocs article de la page -->
+<!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
             <?php
 
-                include("article.inc.php");
+                include("functions.php");
+                afficheArticle1();
+                afficheArticle2();
+                afficheArticle3();
 
             ?>
     </body>
