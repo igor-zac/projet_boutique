@@ -12,7 +12,6 @@
         </header>
 <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
             <?php
-
                 include("functions.php");
                 afficheArticle1();
                 afficheArticle2();

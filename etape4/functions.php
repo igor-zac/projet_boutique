@@ -19,13 +19,13 @@ function afficheArticle1(){
     $article = ["Article 1", 100, "article1.jpg"]; ?>
     <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $article[2]?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?= $article[2]?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $article[0]?></h2>
+        <h2><?= $article[0]?></h2>
 
         <div class="prix">
-            <p><?php echo $article[1]?> €</p>
+            <p><?= $article[1]?> €</p>
         </div>
     </div>
 <?php
@@ -35,13 +35,13 @@ function afficheArticle2(){
     $article = ["Article 2", 400, "article2.jpg"];?>
     <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $article[2]?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?= $article[2]?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $article[0]?></h2>
+        <h2><?= $article[0]?></h2>
 
         <div class="prix">
-            <p><?php echo $article[1]?> €</p>
+            <p><?= $article[1]?> €</p>
         </div>
     </div>
 <?php
@@ -51,13 +51,13 @@ function afficheArticle3(){
     $article = ["Article 3", 200, "article3.jpg"]; ?>
     <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $article[2]?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?= $article[2]?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $article[0]?></h2>
+        <h2><?= $article[0]?></h2>
 
         <div class="prix">
-            <p><?php echo $article[1]?> €</p>
+            <p><?= $article[1]?> €</p>
         </div>
     </div>
 <?php
@@ -70,13 +70,13 @@ la fonction se charge d'afficher les articles entrés au même format que les fo
 function afficheArticle(String $nom_fichier, String $nom_article, int $prix){ ?>
     <div class="article">
         <div>
-            <img class="image_article" src=img/<?php echo $nom_fichier?> alt="L'image de mon article">
+            <img class="image_article" src=img/<?= $nom_fichier?> alt="L'image de mon article">
         </div>
 
-        <h2><?php echo $nom_article?></h2>
+        <h2><?= $nom_article?></h2>
 
         <div class="prix">
-            <p><?php echo $prix?> €</p>
+            <p><?= $prix?> €</p>
         </div>
     </div>
 <?php
