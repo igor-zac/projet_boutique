@@ -1,0 +1,65 @@
+/*MISE EN FORME DU HEADER */
+header {
+    width: 100vw;
+    padding: 30px;
+    background-color: grey;
+}
+
+header h1 {
+   text-align: center;
+    font-size: 2.5rem;
+}
+
+/* MISE EN FORME DE CHAQUE SECTION ARTICLE ET DE SON CONTENU */
+.article  {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    margin-top:20px;
+    background-color: darkgrey;
+    padding: 20px;
+
+    height: 170px;
+}
+
+
+
+.article div{
+    flex-grow: 1;
+}
+
+.article h2 {
+    flex-grow: 3;
+}
+
+.image_article {
+    width: 200px;
+    height: 160px;
+}
+
+.prix {
+    border-radius: 50%;
+    background-color: white;
+
+    min-width: 175px;
+    max-width: 175px;
+}
+
+.prix p {
+    display: block;
+    text-align: center;
+    line-height: 120px;
+    font-size: 1.5rem;
+
+}
+
+.check {
+    margin:auto;
+    text-align: center;
+}
+
+.check input {
+    width: 20px;
+    height: 20px;
+}
