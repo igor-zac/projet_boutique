@@ -3,19 +3,35 @@
 include("functions.php");
 include ("baseArticles.php");
 
-$articles = getArr();
-$articles_recus = $_GET['articles'];
-$articles_choisis = [];
 
 
-foreach ($articles_recus as $article){
-    $articles_choisis[$article] = $articles[$article];
-    $articles_choisis[$article]['quantite'] = 1;
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+    if(isset($_GET['add'])){
+        $articles = getArr();
+        $articles_recus = $_GET['articles'];
+        $articles_choisis = [];
+
+
+        foreach ($articles_recus as $article){
+            $articles_choisis[$article] = $articles[$article];
+            $articles_choisis[$article]['quantite'] = 1;
+        }
+
+    }  else {
+        $articles_choisis = unserialize($panier);
+        if(isset($_GET['recalc'])){
+
+        } else {
+
+        }
+
+    }
 }
 
 $panier = serialize($articles_choisis);
 $total = totalPanier($articles_choisis);
-
 ?>
 
 <!doctype html>
@@ -38,6 +54,9 @@ $total = totalPanier($articles_choisis);
         afficheArticles($articles_choisis, false);
         ?>
             <p class="total"><strong>Total :</strong> <?= $total ?> €</p>
+            <div class="bouton">
+                <button type="submit" name="recalc" class="btn btn-primary">Recalculer</button>
+            </div>
 
         </form>
     </body>

@@ -46,7 +46,7 @@ function afficheArticles($array, bool $check){
                <?php
            } else {
                $quantite = $article['quantite'];
-               affichageQuantite($quantite);
+               affichageQuantite($quantite, $key);
            }
            ?>
 

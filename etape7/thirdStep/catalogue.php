@@ -26,7 +26,7 @@ $articles = getArr();
 
             ?>
             <div class="bouton">
-                <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                <button type="submit" name="add" class="btn btn-primary">Ajouter au panier</button>
             </div>
         </form>
     </body>

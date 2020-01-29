@@ -44,8 +44,13 @@ function afficheArticle(String $nom_fichier, String $nom_article, int $prix, str
             <input type="checkbox" name="articles[]" value="<?= $article ?>">
         </div>
         <?php
-            }
+            } else {
+
+            include("quantites.php");
+        }
         ?>
+
+
 
     </div>
 
