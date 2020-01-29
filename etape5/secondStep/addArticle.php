@@ -2,7 +2,7 @@
 <?php
 $validName = $validPrice = $validFile = false; //variables verifiant si les valeurs sont valides ou pas
 $nameErr = $priceErr = $fileErr = ""; // variables contenant la precision sur l'origine de l'erreur en cas d'erreur
-
+$displayName = $displayPrice = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ //On ne lance les verifications que si la page a ete demandee via une requete POST
 
@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //On ne lance les verifications que si
         } else {
             //Sinon, si tout est OK, on declare le champ valide en faisant passer $validName a 'true'
             $validName = true;
+            $displayName = $name;
         }
     }
 
@@ -41,6 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //On ne lance les verifications que si
         } else {
             //Sinon, tout est OK, on declare le champ valide en faisant passer $validPrice a 'true'
             $validPrice = true;
+            $displayPrice = $price;
         }
     }
 
@@ -130,14 +132,14 @@ On precise egalement un attribut 'enctype' avec valeur 'multipart/form-data' afi
                     <div class="form-group">
                         <label>
                             Nom de l'article
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" placeholder="<?php echo htmlspecialchars($displayName)?>">
                             <span class="error"><?= $nameErr ?> </span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
                             Prix de l'article
-                            <input type="number" step="0.01" class="form-control" name="price">
+                            <input type="number" step="0.01" class="form-control" name="price" placeholder="<?php echo htmlspecialchars($displayPrice)?>">
                             <span class="error"><?= $priceErr ?> </span>
                         </label>
                     </div>
