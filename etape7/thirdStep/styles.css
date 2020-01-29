@@ -87,3 +87,26 @@ header h1 {
 .total strong {
     font-weight: bold;
 }
+
+.quantities {
+    width: 130px;
+}
+.quantity {
+    justify-content: flex-end;
+}
+
+.quantity input {
+    width: 30px;
+}
+
+.quantities button {
+    width: 100px;
+    align-self: flex-end;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
