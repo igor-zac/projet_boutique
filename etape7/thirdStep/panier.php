@@ -1,23 +1,19 @@
 
 <?php
 include("functions.php");
+include ("baseArticles.php");
 
-$articles = [
-    "article_1" => ["Article 1", 300, "article1.jpg"],
-    "article_2" => ["Article 2", 400, "article2.jpg"],
-    "article_3" => ["Article 3", 150, "article3.jpg"],
-    "article_4" => ["Article 4", 300, "article4.jpg"],
-    "article_5" => ["Article 5", 50, "article5.jpg"],
-    "article_6" => ["Article 6", 500, "article6.jpg"]
-];
-
-
-
-
+$articles = getArr();
 $articles_recus = $_GET['articles'];
+$articles_choisis = [];
+
+
 foreach ($articles_recus as $article){
     $articles_choisis[$article] = $articles[$article];
+    $articles_choisis[$article]['quantite'] = 1;
 }
+
+$panier = serialize($articles_choisis);
 $total = totalPanier($articles_choisis);
 
 ?>
@@ -36,12 +32,13 @@ $total = totalPanier($articles_choisis);
             <h1>Mon panier</h1>
         </header>
         <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
-        <div class="block">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get" class="block">
+            <input type="hidden" name="panier" value="<?= $panier ?>">
         <?php
-        afficheArticlesTableau($articles_choisis, false);
+        afficheArticles($articles_choisis, false);
         ?>
             <p class="total"><strong>Total :</strong> <?= $total ?> €</p>
 
-        </div>
+        </form>
     </body>
 </html>

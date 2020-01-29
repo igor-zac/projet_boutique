@@ -1,4 +1,8 @@
-
+<?php
+include("functions.php");
+include("baseArticles.php");
+$articles = getArr();
+?>
 
 <!doctype html>
 
@@ -17,8 +21,8 @@
 <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
         <form action="panier.php" method="GET" class="block">
             <?php
-                include("functions.php");
-                afficheArticlesTableau($articles, true);
+
+                afficheArticles($articles, true);
 
             ?>
             <div class="bouton">
