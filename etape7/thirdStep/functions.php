@@ -1,14 +1,7 @@
 <?php
 
+include("quantites.php");
 
-$articles = [
-    "article_1" => ["Article 1", 300, "article1.jpg"],
-    "article_2" => ["Article 2", 400, "article2.jpg"],
-    "article_3" => ["Article 3", 150, "article3.jpg"],
-    "article_4" => ["Article 4", 300, "article4.jpg"],
-    "article_5" => ["Article 5", 50, "article5.jpg"],
-    "article_6" => ["Article 6", 500, "article6.jpg"]
-];
 
 
 /*=====================================================================================================
@@ -20,42 +13,55 @@ la fonction se charge d'afficher les articles entrés au même format que les fo
 function afficheArticlesTableau($array, bool $check){
 
     foreach($array as $key => $article){
-            afficheArticle($article[2], $article[0], $article[1], $key, $check);
+            afficheArticle($article['img'], $article['nom'], $article['prix'], $key, $check);
 
     }
 
 }
 
-function afficheArticle(String $nom_fichier, String $nom_article, int $prix, string $article, bool $check){ ?>
-    <div class="article">
-        <div>
-            <img class="image_article" src="img/<?= $nom_fichier?>" alt="L'image de mon article">
-        </div>
+function afficheArticles($array, bool $check){
+   foreach($array as $key => $article) {
 
-        <h2><?= $nom_article?></h2>
+       $nom_fichier = $article['img'];
+       $nom_article = $article['nom'];
+       $prix = $article['prix'];
+       ?>
 
-        <div class="prix">
-            <p><?= $prix?> €</p>
-        </div>
+       <div class="article">
+           <div>
+               <img class="image_article" src="img/<?= $nom_fichier ?>" alt="L'image de mon article">
+           </div>
 
-        <?php
-        if($check){ ?>
-        <div class="check">
-            <input type="checkbox" name="articles[]" value="<?= $article ?>">
-        </div>
-        <?php
-            }
-        ?>
+           <h2><?= $nom_article ?></h2>
 
-    </div>
+           <div class="prix">
+               <p><?= $prix ?> €</p>
+           </div>
 
-    <?php
+           <?php
+           if ($check) { ?>
+               <div class="check">
+                   <input type="checkbox" name="articles[]" value="<?= $key ?>">
+               </div>
+               <?php
+           } else {
+               $quantite = $article['quantite'];
+               affichageQuantite($quantite);
+           }
+           ?>
+
+       </div>
+
+       <?php
+   }
 }
 
 function totalPanier($array): int{
     $total = 0;
+
     foreach($array as $article){
-        $total += $article[1];
+        $total += $article['prix'];
+
     }
 
     return ($total);
