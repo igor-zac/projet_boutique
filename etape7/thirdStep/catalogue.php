@@ -22,7 +22,7 @@ $articles = getArr();
         <form action="panier.php" method="GET" class="block">
             <?php
 
-                afficheArticles($articles, true);
+                afficheArticles($articles,null, true);
 
             ?>
             <div class="bouton">
