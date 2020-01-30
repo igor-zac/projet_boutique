@@ -89,11 +89,15 @@ $total = totalPanier($articles_choisis);
 
         <?php
         afficheArticles($articles_choisis, $errorTable, false, NULL);
-        ?>
+
+        if(!empty($articles_choisis)) { ?>
             <p class="total"><strong>Total :</strong> <?= $total ?> €</p>
             <div class="bouton">
                 <button type="submit" name="recalc" class="btn btn-primary">Recalculer</button>
             </div>
+            <?php
+        }
+            ?>
 
         </form>
     </body>

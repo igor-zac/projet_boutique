@@ -20,47 +20,52 @@ function afficheArticlesTableau($array, bool $check){
 }
 
 function afficheArticles($array, $errTable,  bool $check, $selected_array){
-   foreach($array as $key => $article) {
+    if(empty($array)){ ?>
+        <p>Le panier est vide </p>
+        <?php
+    } else {
+        foreach ($array as $key => $article) {
 
-       $nom_fichier = $article['img'];
-       $nom_article = $article['nom'];
-       $prix = $article['prix'];
-       ?>
+            $nom_fichier = $article['img'];
+            $nom_article = $article['nom'];
+            $prix = $article['prix'];
+            ?>
 
-       <div class="article">
-           <div>
-               <img class="image_article" src="img/<?= $nom_fichier ?>" alt="L'image de mon article">
-           </div>
+            <div class="article">
+                <div>
+                    <img class="image_article" src="img/<?= $nom_fichier ?>" alt="L'image de mon article">
+                </div>
 
-           <h2><?= $nom_article ?></h2>
+                <h2><?= $nom_article ?></h2>
 
-           <div class="prix">
-               <p><?= $prix ?> €</p>
-           </div>
+                <div class="prix">
+                    <p><?= $prix ?> €</p>
+                </div>
 
-           <?php
-           if ($check) { ?>
-               <div class="check">
-                   <input type="checkbox" name="articles[]" value="<?= $key ?>"
-                   <?php
-                   if(in_array($key, $selected_array)){
-                       echo 'checked';
-                   }
-                   ?> >
+                <?php
+                if ($check) { ?>
+                    <div class="check">
+                        <input type="checkbox" name="articles[]" value="<?= $key ?>"
+                            <?php
+                            if (in_array($key, $selected_array)) {
+                                echo 'checked';
+                            }
+                            ?> >
 
-               </div>
-               <?php
-           } else {
-               $quantite = $article['quantite'];
-               affichageQuantite($quantite, $errTable, $key);
+                    </div>
+                    <?php
+                } else {
+                    $quantite = $article['quantite'];
+                    affichageQuantite($quantite, $errTable, $key);
 
-           }
-           ?>
+                }
+                ?>
 
-       </div>
+            </div>
 
-       <?php
-   }
+            <?php
+        }
+    }
 }
 
 function totalPanier($array): int{
