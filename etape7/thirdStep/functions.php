@@ -19,7 +19,7 @@ function afficheArticlesTableau($array, bool $check){
 
 }
 
-function afficheArticles($array, bool $check){
+function afficheArticles($array, $errTable,  bool $check){
    foreach($array as $key => $article) {
 
        $nom_fichier = $article['img'];
@@ -46,7 +46,8 @@ function afficheArticles($array, bool $check){
                <?php
            } else {
                $quantite = $article['quantite'];
-               affichageQuantite($quantite, $key);
+               affichageQuantite($quantite, $errTable, $key);
+
            }
            ?>
 

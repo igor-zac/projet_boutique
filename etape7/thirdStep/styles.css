@@ -110,3 +110,10 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.error {
+    font-size: 0.7rem;
+    color: red;
+    width: 100%;
+    text-align: end;
+}
