@@ -1,5 +1,7 @@
 
 <?php
+session_start();
+
 include("functions.php");
 include ("baseArticles.php");
 
@@ -19,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
             $articles_choisis[$article]['quantite'] = 1;
         }
 
-    }  else {
+    }  elseif (isset($_SESSION['panier'])){
 
-        $articles_choisis = unserialize($_GET['panier']);
+        $articles_choisis = unserialize($_SESSION['panier']);
 
         if(isset($_GET['delete'])){
             unset($articles_choisis[$_GET['delete']]);
@@ -29,22 +31,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
 
         foreach($articles_choisis as $key => $article){
-            if($_GET[$key] > 0){
-                $articles_choisis[$key]['quantite'] = $_GET[$key];
-                $errorTable[$key] = "";
+            if(isset($_GET[$key])) {
+                if ($_GET[$key] > 0) {
+                    $articles_choisis[$key]['quantite'] = $_GET[$key];
+                    $errorTable[$key] = "";
+                } else {
+                    $errorTable[$key] = "Veuillez entrer un nombre supérieur à 0";
+                }
             } else {
-                $errorTable[$key] = "Veuillez entrer un nombre supérieur à 0";
+                $errorTable[$key] = "";
             }
 
         }
 
 
+    } else if(isset($_COOKIE['panier'])){
+
+        $articles_choisis = unserialize($_COOKIE['panier']);
+
+    }
+}
+
+foreach ($articles_choisis as $key => $article){
+    if(!isset($errorTable[$key])){
+        $errorTable[$key] = "";
     }
 }
 
 
-
 $panier = serialize($articles_choisis);
+
+$_SESSION['panier'] = $panier;
+setcookie('panier', $panier, time()+14*24*3600, null, null, false, true);
 
 $total = totalPanier($articles_choisis);
 ?>
@@ -64,7 +82,7 @@ $total = totalPanier($articles_choisis);
         </header>
         <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get" class="block">
-            <input type="hidden" name="panier" value='<?= $panier ?>'>
+
         <?php
         afficheArticles($articles_choisis, $errorTable, false);
         ?>
