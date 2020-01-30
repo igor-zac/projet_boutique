@@ -60,7 +60,7 @@ function totalPanier($array): int{
     $total = 0;
 
     foreach($array as $article){
-        $total += $article['prix'];
+        $total += $article['prix'] * $article['quantite'];
 
     }
 
