@@ -10,7 +10,12 @@ $errorTable = [];
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
-    if(isset($_GET['add'])){
+    if(isset($_GET['empty_cart'])){
+
+        $articles_choisis = [];
+
+
+    } elseif(isset($_GET['add'])){
         $articles = getArr();
         $articles_recus = $_GET['articles'];
         $articles_choisis = [];
@@ -18,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
         foreach ($articles_recus as $article){
             $articles_choisis[$article] = $articles[$article];
+
             $articles_choisis[$article]['quantite'] = 1;
         }
 
@@ -82,7 +88,7 @@ $total = totalPanier($articles_choisis);
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get" class="block">
 
         <?php
-        afficheArticles($articles_choisis, $errorTable, false);
+        afficheArticles($articles_choisis, $errorTable, false, NULL);
         ?>
             <p class="total"><strong>Total :</strong> <?= $total ?> €</p>
             <div class="bouton">

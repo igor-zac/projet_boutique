@@ -19,7 +19,7 @@ function afficheArticlesTableau($array, bool $check){
 
 }
 
-function afficheArticles($array, $errTable,  bool $check){
+function afficheArticles($array, $errTable,  bool $check, $selected_array){
    foreach($array as $key => $article) {
 
        $nom_fichier = $article['img'];
@@ -41,7 +41,13 @@ function afficheArticles($array, $errTable,  bool $check){
            <?php
            if ($check) { ?>
                <div class="check">
-                   <input type="checkbox" name="articles[]" value="<?= $key ?>">
+                   <input type="checkbox" name="articles[]" value="<?= $key ?>"
+                   <?php
+                   if(in_array($key, $selected_array)){
+                       echo 'checked';
+                   }
+                   ?> >
+
                </div>
                <?php
            } else {

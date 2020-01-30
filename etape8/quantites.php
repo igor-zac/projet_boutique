@@ -19,3 +19,4 @@ function affichageQuantite(int $quantite, $errTable, string $key)
     <?php
 }
 ?>
+
