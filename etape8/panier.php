@@ -77,9 +77,7 @@ $total = totalPanier($articles_choisis);
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
-            <h1>Mon panier</h1>
-        </header>
+    <?php include("entete.php"); ?>
         <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get" class="block">
 

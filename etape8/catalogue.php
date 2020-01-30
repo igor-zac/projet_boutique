@@ -15,9 +15,7 @@ $articles = getArr();
 
     </head>
     <body>
-        <header>
-            <h1>Nom de la boutique</h1>
-        </header>
+        <?php include("entete.php"); ?>
 <!-- Inclus le fichier functions.php et appelle ses fonctions pour générer les blocs article de la page -->
         <form action="panier.php" method="GET" class="block">
             <?php
